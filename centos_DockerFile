@@ -1,0 +1,8 @@
+# Get the base image
+FROM docker.io/centos
+MAINTAINER vkumar
+
+LABEL Remarks="This is a dockerfile for centos"
+RUN yum -y install openssh-server openssh-clients && \
+   /usr/sbin/sshd -D 
+   
