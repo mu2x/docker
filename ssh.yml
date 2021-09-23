@@ -1,0 +1,3 @@
+#/usr/bin/ssh-keygen -A
+#rm /run/nologin
+ /usr/sbin/sshd -D
