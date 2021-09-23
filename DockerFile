@@ -1,10 +1,11 @@
-FROM python:3.7-alpine
-WORKDIR /code
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-EXPOSE 5000
-COPY . .
-CMD ["flask", "run"]
+# Get the base image
+FROM centos
+
+LABEL Remarks="This is a dockerfile for centos"
+RUN yum -y install openssh-server openssh-clients 
+RUN /usr/bin/ssh-keygen -A 
+#CMD /usr/sbin/sshd -D >/dev/null &
+CMD /usr/sbin/sshd -D
+RUN ssh-keygen   -t rsa -f /root/.ssh/id_rsa -q  -N ""
+RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+RUN rm /run/nologin
