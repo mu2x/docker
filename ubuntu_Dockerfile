@@ -1,4 +1,5 @@
 # https://github.com/mu2x/docker/new/main
+# Written by V. Kumar (vkumar@utep.edu)
 
 FROM ubuntu
 
@@ -26,4 +27,5 @@ CMD  /etc/init.d/apache2 start && \
      /etc/init.d/ssh start   && \
      (cd /var/www; mv html html2; ln -s /onedrive/DLF4/public_html html; ln -s /onedrive/COMMON2 .; ln -s /onedrive/DATA . ) && \
      bash           
+
 
