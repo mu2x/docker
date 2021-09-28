@@ -1,6 +1,7 @@
 # https://github.com/mu2x/docker/new/main
 # Written by V. Kumar (vkumar@utep.edu)
 # docker build -t vk --file Dockerfile .
+# docker build https://raw.githubusercontent.com/mu2x/docker/main/ubuntu_Dockerfile -t vk
 # docker run -t -p 80:80  -d -v C:/Users/vkric/"OneDrive - University of Texas at El Paso"/COURSES_Assessment_Website:/onedrive vk
 
 FROM ubuntu
