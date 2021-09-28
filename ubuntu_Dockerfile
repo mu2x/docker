@@ -7,7 +7,7 @@ LABEL Remarks="This is a dockerfile for ubuntu"
 
 RUN apt-get update
 RUN apt-get -y install software-properties-common whiptail
-RUN apt-get -y install apache2  php libapache2-mod-php #LAMP installation
+RUN apt-get -y install apache2  php libapache2-mod-php php-xml #LAMP installation
 RUN apt -y install vim
 
 RUN apt-get -y install openssh-server 
@@ -19,13 +19,15 @@ USER root
 RUN ssh-keygen   -t rsa -f /root/.ssh/id_rsa -q  -N ""
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 #RUN rm /run/nologin
+RUN  (cd /var/www; mv html html2; \
+      ln -s /onedrive/DLF4/public_html html; \
+      ln -s /onedrive/COMMON2 .; \
+      ln -s /onedrive/DLF3/COMMON .; \
+      ln -s /onedrive/DATA-gce/DATA DATA ) 
 
 
 #EXPOSE 80
 
 CMD  /etc/init.d/apache2 start && \
      /etc/init.d/ssh start   && \
-     (cd /var/www; mv html html2; ln -s /onedrive/DLF4/public_html html; ln -s /onedrive/COMMON2 .; ln -s /onedrive/DATA . ) && \
      bash           
-
-
